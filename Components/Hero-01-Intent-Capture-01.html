@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  COMPONENT: Hero section — 01-Intent-Capture-01
+  Figma source: node-id=158-5588
+  Page: Component - 09 MAR 2026
+  ============================================================
+
+  STRUCTURE
+  ─────────────────────────────────────────────────────────────
+  lt-s1-hero  (W: 1440, H: 266 Hug)
+  ├── lt-s1-hero-header
+  │   └── lt-s1-page-title  — headline, 40px/300 + bold 700
+  └── lt-s1-hero-body  (gap 12px, centered)
+      ├── lt-s1-hero-filter-row  (gap 8px)
+      │   ├── lt-s1-hero-pill.red  — High priority
+      │   └── lt-s1-hero-pill.gray — Audit report request
+      ├── lt-s1-hero-subtitle  — 15px/600
+      ├── lt-s1-hero-desc     — 14px/400
+      └── lt-s1-hero-actions  (gap 10px)
+          ├── lt-s1-hero-btn-outline  — Delegate
+          └── lt-s1-hero-btn-primary  — Review
+
+  TOKENS
+  ─────────────────────────────────────────────────────────────
+  Frame background .... #F0F0F3 (--bg-base)
+  Frame padding ....... 32px (top/bottom)
+  Hero gap ............ 32px
+  Body gap ............ 12px
+  Title ............... Plus Jakarta Sans 40px/300, bold 700, #0a0a0a
+  Pill red ............ rgba(239,68,68,0.07) fill · rgba(239,68,68,0.25) stroke · #dc2626 text
+  Pill gray ........... transparent fill · rgba(0,0,0,0.09) stroke · #525252 text
+  Subtitle ............ 15px/600, #0a0a0a
+  Desc ................ 14px/400, #525252
+  Btn primary ......... bg #1e293b · #fff · radius 10px · 10/22px padding · 14px/600
+  Btn outline ......... bg #fff · #1e293b · border #e2e8f0 · radius 10px · 10/22px · 14px/500
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Intent-Capture-01 — Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f0f0f1; }
+
+    /* ─── Preview scaffold ─────────────────────────────────── */
+    .preview-page { display: flex; flex-direction: column; gap: 40px; padding: 48px 40px; }
+    .preview-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #737373; margin-bottom: 12px; }
+    .preview-frame { background: #F0F0F3; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+    .preview-iframe { width: 100%; height: 600px; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; display: block; }
+    .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 32px; }
+    .spec-table th { text-align: left; padding: 8px 12px; background: #f4f4f5; color: #525252; font-weight: 600; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .spec-table td { padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: #374151; font-family: 'Courier New', monospace; font-size: 12px; }
+    .spec-table tr:last-child td { border-bottom: none; }
+    .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); vertical-align: middle; margin-right: 6px; }
+
+    /* ─── COMPONENT — from 01-Intent-Capture-light.html ────── */
+    :root {
+      --bg-base:    #F0F0F3;
+      --t-primary:  #0a0a0a;
+      --t-secondary:#525252;
+      --border:     rgba(0,0,0,0.09);
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Hero outer container */
+    .lt-s1-hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 32px;
+    }
+
+    /* Header: title */
+    .lt-s1-hero-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .lt-s1-page-title {
+      font-family: var(--font);
+      font-size: 40px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--t-primary);
+      line-height: 1.2;
+    }
+    .lt-s1-page-title strong { font-weight: 700; }
+
+    /* Body: chips + text + buttons */
+    .lt-s1-hero-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .lt-s1-hero-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lt-s1-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 20px;
+      padding: 5px 14px;
+      cursor: default;
+    }
+    .lt-s1-hero-pill.red {
+      color: #dc2626;
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+    .lt-s1-hero-pill.gray {
+      color: var(--t-secondary);
+      background: transparent;
+      border: 1px solid #A0A2A5;
+    }
+    .lt-s1-hero-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--t-primary);
+      line-height: 1.4;
+    }
+    .lt-s1-hero-desc {
+      font-size: 14px;
+      color: var(--t-secondary);
+      line-height: 1.6;
+      max-width: 640px;
+    }
+    .lt-s1-hero-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .lt-s1-hero-btn-primary {
+      background: #1e293b;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background 0.15s;
+    }
+    .lt-s1-hero-btn-primary:hover { background: #0f172a; }
+    .lt-s1-hero-btn-outline {
+      background: #ffffff;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.15s;
+    }
+    .lt-s1-hero-btn-outline:hover { background: #f4f4f5; border-color: #d4d4d8; }
+  </style>
+</head>
+<body>
+
+<div class="preview-page">
+
+  <!-- Live preview — prototype in context -->
+  <div>
+    <p class="preview-label">Live preview — 01-Intent-Capture-light.html</p>
+    <iframe class="preview-iframe" src="../01-Intent-Capture-light.html" title="Hero section in prototype context"></iframe>
+  </div>
+
+  <!-- Isolated component -->
+  <div>
+    <p class="preview-label">01-Intent-Capture-01 · Figma node 158-5588 — isolated</p>
+    <div class="preview-frame">
+
+      <!-- ══════════════════════════════════════════════════════
+           HERO — copy this block into your screens
+           ══════════════════════════════════════════════════════ -->
+      <div class="lt-s1-hero">
+
+        <!-- Headline -->
+        <div class="lt-s1-hero-header">
+          <h1 class="lt-s1-page-title">Hi Alexandra, <strong>1 high priority task</strong> needs your attention.</h1>
+        </div>
+
+        <!-- Body: chips + text + buttons -->
+        <div class="lt-s1-hero-body">
+
+          <!-- Chips -->
+          <div class="lt-s1-hero-filter-row">
+            <!-- High priority chip -->
+            <div class="lt-s1-hero-pill red">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 11V3M3.5 6.5L7 3l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.5 10L7 6.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              High priority
+            </div>
+            <!-- Audit report request chip -->
+            <div class="lt-s1-hero-pill gray">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 2a10 10 0 1 0 10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 3"/>
+                <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Audit report request
+            </div>
+          </div>
+
+          <!-- Subtitle -->
+          <div class="lt-s1-hero-subtitle">Thomas Chen has requested an assurance report.</div>
+
+          <!-- Description -->
+          <div class="lt-s1-hero-desc">Assess cybersecurity control posture and SEC disclosure readiness before Thursday's Audit Committee meeting.</div>
+
+          <!-- Actions -->
+          <div class="lt-s1-hero-actions">
+            <button class="lt-s1-hero-btn-outline">Delegate</button>
+            <button class="lt-s1-hero-btn-primary">Review</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- ══════════════════════════════════════════════════════ -->
+
+    </div>
+  </div>
+
+  <!-- Spec table -->
+  <table class="spec-table">
+    <thead>
+      <tr><th>Property</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Figma node</td><td>158-5588</td></tr>
+      <tr><td>Width</td><td>1440px (Fill)</td></tr>
+      <tr><td>Height</td><td>266px (Hug)</td></tr>
+      <tr><td>Background</td><td><span class="swatch" style="background:#F0F0F3;"></span>#F0F0F3 (--bg-base)</td></tr>
+      <tr><td>Layout</td><td>flex column · align-center · gap 32px · padding 32px</td></tr>
+      <tr><td colspan="2" style="font-weight:700; padding-top:12px;">Headline</td></tr>
+      <tr><td>Font</td><td>Plus Jakarta Sans · 40px · weight 300 (regular) / 700 (bold for emphasis)</td></tr>
+      <tr><td>Color</td><td><span class="swatch" style="background:#0a0a0a;"></span>#0a0a0a (--t-primary)</td></tr>
+      <tr><td>Letter spacing</td><td>-0.02em</td></tr>
+      <tr><td>Line height</td><td>1.2</td></tr>
+      <tr><td colspan="2" style="font-weight:700; padding-top:12px;">Chips (filter row, gap 8px)</td></tr>
+      <tr><td>Chip size</td><td>13px · weight 500 · radius 20px · padding 5px 14px · gap 6px</td></tr>
+      <tr><td>High priority fill</td><td><span class="swatch" style="background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.25);"></span>rgba(239,68,68,0.07) · border rgba(239,68,68,0.25) · text <span class="swatch" style="background:#dc2626;"></span>#dc2626</td></tr>
+      <tr><td>Audit report fill</td><td>transparent · border rgba(0,0,0,0.09) · text <span class="swatch" style="background:#525252;"></span>#525252</td></tr>
+      <tr><td colspan="2" style="font-weight:700; padding-top:12px;">Body (gap 12px)</td></tr>
+      <tr><td>Subtitle</td><td>15px · weight 600 · <span class="swatch" style="background:#0a0a0a;"></span>#0a0a0a</td></tr>
+      <tr><td>Description</td><td>14px · weight 400 · <span class="swatch" style="background:#525252;"></span>#525252 · max-width 640px</td></tr>
+      <tr><td colspan="2" style="font-weight:700; padding-top:12px;">Buttons (gap 10px)</td></tr>
+      <tr><td>Review (primary)</td><td>bg <span class="swatch" style="background:#1e293b;"></span>#1e293b · #fff · radius 10px · 10/22px · 14px/600</td></tr>
+      <tr><td>Delegate (outline)</td><td>bg #fff · <span class="swatch" style="background:#1e293b;"></span>#1e293b · border #e2e8f0 · radius 10px · 10/22px · 14px/500</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
